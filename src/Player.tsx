@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import Dropdown from './Dropdown';
-import { IPlayerProps } from './interfaces';
+import { IPlayer } from './interfaces';
 
-class Player extends React.Component<IPlayerProps, any> {
-    constructor(props: IPlayerProps) {
+class Player extends React.Component<IPlayer, any> {
+    constructor(props: IPlayer) {
         super(props);
     }
 
@@ -13,7 +13,6 @@ class Player extends React.Component<IPlayerProps, any> {
             <div className="alert alert-primary">
                 <div>{this.props.name}</div>
                 <div>{this.props.phone}</div>
-                <div>{this.props.status}</div>
                 
                 <Dropdown status={this.props.status} />
             </div>
