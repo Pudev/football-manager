@@ -1,6 +1,9 @@
 import * as React from 'react';
 
-class ButtonAddPlayer extends React.Component<any, any> {
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+class ButtonAddEditPlayer extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
 
@@ -26,15 +29,12 @@ class ButtonAddPlayer extends React.Component<any, any> {
         this.setState({ name: '', phone: '' });
     }
 
-    public submitHandler = (event: any) => {
-        event.preventDefault();
-        event.target.className += ' was-validated';
-      }
-
     public render() {
         return (
-            <form className='needs-validation' onSubmit={this.submitHandler} noValidate={true}>
-                <button type="button" className="btn btn-outline-primary" data-toggle="modal" data-target={'#' + this.props.teamName}>+</button>
+            <form className='needs-validation'>
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target={'#' + this.props.teamName}>
+                    <FontAwesomeIcon icon={faUserPlus}/>
+                </button>
 
                 <div>
                     <div className="modal fade" id={this.props.teamName}>
@@ -75,4 +75,4 @@ class ButtonAddPlayer extends React.Component<any, any> {
     }
 }
 
-export default ButtonAddPlayer;
+export default ButtonAddEditPlayer;
