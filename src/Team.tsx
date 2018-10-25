@@ -36,7 +36,7 @@ class Team extends React.Component<any, any> {
                         {
                             this.props.teamName === 'Team1' ?
                                 <ButtonAddEditPlayer teamName={'Team1'} updateFirstTeam={this.updateFirstTeam} /> :
-                                <ButtonAddEditPlayer teamName={'Team2'} updatesecondTeam={this.updateSecondTeam} />
+                                <ButtonAddEditPlayer teamName={'Team2'} updateSecondTeam={this.updateSecondTeam} />
                         }
                     </div>
                 </div>
