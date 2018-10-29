@@ -2,9 +2,8 @@ import ButtonAddEditPlayer from './ButtonAddEditPlayer';
 import Dropdown from './Dropdown';
 import { IPlayer } from './interfaces';
 
-import { faUserSlash } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react';
+import ButtonDeletePlayer from './ButtonDeletePlayer';
 
 class Player extends React.Component<any, any> {
     constructor(props: any) {
@@ -18,8 +17,8 @@ class Player extends React.Component<any, any> {
         this.props.editPlayer(player);
     }
 
-    public deletePlayer = () => {
-        // to do delete a player
+    public deletePlayer = (id: string) => {
+        this.props.deletePlayer(id);
     }
 
     public render() {
@@ -39,7 +38,7 @@ class Player extends React.Component<any, any> {
                             status={this.props.status} />
                     </div>
                     <div className="col-3">
-                        <button className="btn btn-primary" onClick={this.deletePlayer}><FontAwesomeIcon icon={faUserSlash} /></button>
+                        <ButtonDeletePlayer name={this.props.name} id={this.props.id} deletePlayer={this.deletePlayer}/>
                     </div>
                     <div className="col-6">
                         <Dropdown status={this.props.status} />

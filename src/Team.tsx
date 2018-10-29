@@ -17,6 +17,7 @@ class Team extends React.Component<{ teamName: string }, any> {
 
         this.addPlayer = this.addPlayer.bind(this);
         this.editPlayer = this.editPlayer.bind(this);
+        this.deletePlayer = this.deletePlayer.bind(this);
     }
 
     public addPlayer = (player: IPlayer) => {
@@ -41,8 +42,22 @@ class Team extends React.Component<{ teamName: string }, any> {
         this.setState({ players: newList });
     }
 
+    public deletePlayer = (id: string) => {
+        const index = this.state.players.findIndex((x: IPlayer) => x.id === id );
+        const newList = [...this.state.players];
+        newList.splice(index, 1);
+        this.setState({ players: newList });
+    }
+
     public listPlayers = (team: IPlayer[]) => team.map((player) =>
-        <Player key={player.id} id={player.id} name={player.name} phone={player.phone} status={player.status} editPlayer={this.editPlayer} />
+        <Player
+            key={player.id}
+            id={player.id}
+            name={player.name}
+            phone={player.phone}
+            status={player.status}
+            editPlayer={this.editPlayer}
+            deletePlayer={this.deletePlayer} />
     );
 
     public render() {
