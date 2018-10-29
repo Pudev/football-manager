@@ -15,12 +15,10 @@ class App extends React.Component<any, any> {
                 </header>
                 <div className="row">
                     <div className="col-sm-6" style={{ marginBottom: '20px', marginTop: '10px', paddingBottom: '10px', borderBottom: 'solid 1px grey' }}>
-                        <Team teamName={"Team1"} />
-                        {/* <ButtonAddEditPlayer teamName={'Team1'} /> */}
+                        <Team teamName={"Home"} />
                     </div>
                     <div className="col-sm-6">
-                        <Team teamName={"Team2"} />
-                        {/* <ButtonAddEditPlayer teamName={'Team2'} updateSecondTeam={this.updateSecondTeam} /> */}
+                        <Team teamName={"Away"} />
                     </div>
                 </div>
             </div>

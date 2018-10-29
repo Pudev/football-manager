@@ -1,31 +1,49 @@
-import * as React from 'react';
-import ButtonAddEditPlayer from './ButtonAddPlayer';
-import { PlayerStatus } from './constants';
+import ButtonAddEditPlayer from './ButtonAddEditPlayer';
+// import { PlayerStatus } from './constants';
 import { IPlayer } from './interfaces';
 import Player from './Player';
 
-class Team extends React.Component<any, any> {
+import * as React from 'react';
+import { v4 } from 'uuid';
+
+
+class Team extends React.Component<{ teamName: string }, any> {
     constructor(props: any) {
         super(props);
 
-        this.state = { firstTeamPlayers, secondTeamPlayers };
-        this.updateFirstTeam = this.updateFirstTeam.bind(this);
-        this.updateSecondTeam = this.updateSecondTeam.bind(this);
+        this.state = {
+            players: []
+        };
+
+        this.addPlayer = this.addPlayer.bind(this);
+        this.editPlayer = this.editPlayer.bind(this);
     }
 
-    public updateFirstTeam = (player: IPlayer) => {
-        const newList = [...this.state.firstTeamPlayers, player];
+    public addPlayer = (player: IPlayer) => {
+        player.id = v4();
+
+        const newList = [...this.state.players, player];
         this.setState({
-            firstTeamPlayers: newList
+            players: newList
         });
     }
 
-    public updateSecondTeam = (player: any) => {
-        const newList = [...this.state.secondTeamPlayers, player];
-        this.setState({
-            secondTeamPlayers: newList
+    public editPlayer = (player: IPlayer) => {
+        const newList = this.state.players.map((x: IPlayer) => {
+            if (x.id === player.id) {
+                x.name = player.name;
+                x.phone = player.phone;
+
+                return x;
+            }
+            return x;
         });
+        this.setState({ players: newList });
     }
+
+    public listPlayers = (team: IPlayer[]) => team.map((player) =>
+        <Player key={player.id} id={player.id} name={player.name} phone={player.phone} status={player.status} editPlayer={this.editPlayer} />
+    );
 
     public render() {
         return (
@@ -33,35 +51,15 @@ class Team extends React.Component<any, any> {
                 <div className="row">
                     <h3 className="col-8">{this.props.teamName}</h3>
                     <div className="col-4">
-                        {
-                            this.props.teamName === 'Team1' ?
-                                <ButtonAddEditPlayer teamName={'Team1'} updateFirstTeam={this.updateFirstTeam} /> :
-                                <ButtonAddEditPlayer teamName={'Team2'} updateSecondTeam={this.updateSecondTeam} />
-                        }
+                        <ButtonAddEditPlayer name={this.props.teamName} addPlayer={this.addPlayer} />
                     </div>
                 </div>
                 <div className="col-12">
-                    {this.props.teamName === 'Team1' ? listPlayers(this.state.firstTeamPlayers) : listPlayers(this.state.secondTeamPlayers)}
+                    {this.listPlayers(this.state.players)}
                 </div>
             </div>
         );
     }
 }
-
-const firstTeamPlayers = [
-    { name: 'Georgi Petrov', phone: '099944949', status: PlayerStatus.Invited },
-    { name: 'Alexander Dimov', phone: '09923944949', status: PlayerStatus.Uninvited },
-    { name: 'Zlatan Ivanov', phone: '32423444', status: PlayerStatus.Uninvited }
-];
-
-const secondTeamPlayers = [
-    { name: 'Angel Argirov', phone: '089237492', status: PlayerStatus.WillNotPlay },
-    { name: 'Petar Angelov', phone: '0933234111', status: PlayerStatus.WillPlay },
-    { name: 'Dimitar Pudev', phone: '092348239', status: PlayerStatus.WillPlay }
-];
-
-const listPlayers = (team: IPlayer[]) => team.map((x, index) =>
-    <Player key={index} name={x.name} phone={x.phone} status={x.status} />
-);
 
 export default Team;
