@@ -16,12 +16,12 @@ class ButtonDeletePlayer extends React.Component<any, any> {
     public render() {
         return (
             <form className='needs-validation'>
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target={'#' + this.props.name + 'delete'}>
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target={'#' + this.props.name.replace(/\s/g, '') + 'delete'}>
                     <FontAwesomeIcon icon={faUserSlash} />
                 </button>
 
                 <div>
-                    <div className="modal fade" id={this.props.name + 'delete'}>
+                    <div className="modal fade" id={this.props.name.replace(/\s/g, '') + 'delete'}>
                         <div className="modal-dialog modal-dialog-centered">
                             <div className="modal-content">
 

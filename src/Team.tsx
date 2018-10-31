@@ -1,5 +1,4 @@
 import ButtonAddEditPlayer from './ButtonAddEditPlayer';
-// import { PlayerStatus } from './constants';
 import { IPlayer } from './interfaces';
 import Player from './Player';
 

@@ -14,6 +14,7 @@ class ButtonAddEditPlayer extends React.Component<any, any> {
         }
 
         this.addPlayer = this.addPlayer.bind(this);
+        this.editPlayer = this.editPlayer.bind(this);
     }
 
     public changeName = (event: any) => {
@@ -56,12 +57,16 @@ class ButtonAddEditPlayer extends React.Component<any, any> {
     public render() {
         return (
             <form className='needs-validation'>
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target={'#' + this.props.name}>
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target={
+                    this.props.id ? '#' + this.props.name.replace(/\s/g, '') : '#' + this.props.name
+                }>
                     <FontAwesomeIcon icon={this.props.id ? faUserEdit : faUserPlus} />
                 </button>
 
                 <div>
-                    <div className="modal fade" id={this.props.name}>
+                    <div className="modal fade" id={
+                        this.props.id ? this.props.name.replace(/\s/g, '') : this.props.name
+                    }>
                         <div className="modal-dialog modal-dialog-centered">
                             <div className="modal-content">
 
