@@ -1,18 +1,28 @@
-import ButtonAddEditPlayer from './ButtonAddEditPlayer';
-import { IPlayer } from './interfaces';
-import Player from './Player';
+import ButtonAddEditPlayer from '../common/ButtonAddEditPlayer';
+import Player from '../player/Player';
+
+import * as constants from '../../constants'
+import { IPlayer } from '../../interfaces';
 
 import * as React from 'react';
 import { v4 } from 'uuid';
+
 
 
 class Team extends React.Component<{ teamName: string }, any> {
     constructor(props: any) {
         super(props);
 
-        this.state = {
-            players: []
-        };
+        let key: any = {};
+        let localStoragePlayers: string[] = [];
+
+        this.props.teamName === constants.HOME_TEAM ?
+            key = localStorage.getItem(constants.HOME_PLAYERS) :
+            key = localStorage.getItem(constants.AWAY_PLAYERS);
+
+
+        key ? localStoragePlayers = JSON.parse(key) : localStoragePlayers = [];
+        localStoragePlayers ? this.state = { players: localStoragePlayers } : this.state = { players: [] };
 
         this.addPlayer = this.addPlayer.bind(this);
         this.editPlayer = this.editPlayer.bind(this);
@@ -26,6 +36,10 @@ class Team extends React.Component<{ teamName: string }, any> {
         this.setState({
             players: newList
         });
+
+        this.props.teamName === constants.HOME_TEAM ?
+        localStorage.setItem(constants.HOME_PLAYERS, JSON.stringify(newList)) :
+        localStorage.setItem(constants.AWAY_PLAYERS, JSON.stringify(newList));
     }
 
     public editPlayer = (player: IPlayer) => {
@@ -39,14 +53,22 @@ class Team extends React.Component<{ teamName: string }, any> {
             return x;
         });
         this.setState({ players: newList });
+
+        this.props.teamName === constants.HOME_TEAM ?
+        localStorage.setItem(constants.HOME_PLAYERS, JSON.stringify(newList)) :
+        localStorage.setItem(constants.AWAY_PLAYERS, JSON.stringify(newList));
     }
 
     public deletePlayer = (id: string) => {
-        const index = this.state.players.findIndex((x: IPlayer) => x.id === id );
+        const index = this.state.players.findIndex((x: IPlayer) => x.id === id);
         const newList = [...this.state.players];
         newList.splice(index, 1);
+
         this.setState({ players: newList });
-    }
+
+        this.props.teamName === constants.HOME_TEAM ?
+        localStorage.setItem(constants.HOME_PLAYERS, JSON.stringify(newList)) :
+        localStorage.setItem(constants.AWAY_PLAYERS, JSON.stringify(newList));    }
 
     public listPlayers = (team: IPlayer[]) => team.map((player) =>
         <Player

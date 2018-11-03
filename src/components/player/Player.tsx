@@ -1,9 +1,10 @@
-import ButtonAddEditPlayer from './ButtonAddEditPlayer';
-import Dropdown from './Dropdown';
-import { IPlayer } from './interfaces';
+import ButtonAddEditPlayer from '../common/ButtonAddEditPlayer';
+import ButtonDeletePlayer from '../common/ButtonDeletePlayer';
+import Dropdown from '../common/Dropdown';
+
+import { IPlayer } from '../../interfaces';
 
 import * as React from 'react';
-import ButtonDeletePlayer from './ButtonDeletePlayer';
 
 class Player extends React.Component<any, any> {
     constructor(props: any) {

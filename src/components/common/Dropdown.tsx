@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PlayerStatus } from './constants';
+import { PlayerStatus } from './../../constants';
 
 class Dropdown extends React.Component<any, any> {
     constructor(props: any) {

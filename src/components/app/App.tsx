@@ -1,6 +1,9 @@
-import * as React from 'react';
 import './App.css';
-import Team from './Team';
+
+import * as React from 'react';
+import * as constants from '../../constants';
+import Team from '../team/Team';
+
 
 class App extends React.Component<any, any> {
     constructor(props: any) {
@@ -15,10 +18,10 @@ class App extends React.Component<any, any> {
                 </header>
                 <div className="row">
                     <div className="col-sm-6" style={{ marginBottom: '20px', marginTop: '10px', paddingBottom: '10px', borderBottom: 'solid 1px grey' }}>
-                        <Team teamName={"Home"} />
+                        <Team teamName={constants.HOME_TEAM} />
                     </div>
                     <div className="col-sm-6">
-                        <Team teamName={"Away"} />
+                        <Team teamName={constants.AWAY_TEAM} />
                     </div>
                 </div>
             </div>
