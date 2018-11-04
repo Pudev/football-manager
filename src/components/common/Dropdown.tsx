@@ -14,6 +14,8 @@ class Dropdown extends React.Component<any, any> {
         this.setState({
             value: PlayerStatus[event.currentTarget.text]
         })
+
+        this.props.editPlayer(Object.assign({}, this.props, { status: PlayerStatus[event.currentTarget.text] }));
     }
 
     public render() {

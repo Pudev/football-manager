@@ -47,6 +47,7 @@ class Team extends React.Component<{ teamName: string }, any> {
             if (x.id === player.id) {
                 x.name = player.name;
                 x.phone = player.phone;
+                x.status = player.status;
 
                 return x;
             }

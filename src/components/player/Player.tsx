@@ -33,16 +33,15 @@ class Player extends React.Component<any, any> {
                     <div className="col-3">
                         <ButtonAddEditPlayer
                             editPlayer={this.editPlayer}
-                            id={this.props.id}
-                            name={this.props.name}
-                            phone={this.props.phone}
-                            status={this.props.status} />
+                            {...this.props} />
                     </div>
                     <div className="col-3">
-                        <ButtonDeletePlayer name={this.props.name} id={this.props.id} deletePlayer={this.deletePlayer}/>
+                        <ButtonDeletePlayer name={this.props.name} id={this.props.id} deletePlayer={this.deletePlayer} />
                     </div>
                     <div className="col-6">
-                        <Dropdown status={this.props.status} />
+                        <Dropdown
+                            editPlayer={this.editPlayer}
+                           {...this.props} />
                     </div>
                 </div>
             </div>
