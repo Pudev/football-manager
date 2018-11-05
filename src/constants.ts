@@ -5,7 +5,11 @@ export enum PlayerStatus {
     WillPlay = 3
 }
 
+export enum PlayerTeam {
+    Home = 0,
+    Away = 1
+}
+
 export const HOME_TEAM = 'Home';
 export const AWAY_TEAM = 'Away';
-export const HOME_PLAYERS = 'homePlayers';
-export const AWAY_PLAYERS = 'awayPlayers';
+export const TEAM_PLAYERS = 'TeamPlayers';

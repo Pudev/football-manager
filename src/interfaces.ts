@@ -2,5 +2,6 @@ export interface IPlayer {
     id: string
     name: string,
     phone: string,
-    status: number
+    status: number,
+    team: number
 }

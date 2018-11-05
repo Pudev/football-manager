@@ -10,7 +10,8 @@ class ButtonAddEditPlayer extends React.Component<any, any> {
             id: '',
             name: '',
             phone: '',
-            status: 0
+            status: 0,
+            team: this.props.team
         }
 
         this.addPlayer = this.addPlayer.bind(this);
@@ -44,13 +45,12 @@ class ButtonAddEditPlayer extends React.Component<any, any> {
             id: this.props.id,
             name: this.props.name,
             phone: this.props.phone,
-            status: this.props.status
+            status: this.props.status,
+            team: this.props.team
         }
 
         if (this.props.id) {
-            this.setState({
-                ...player
-            })
+            this.setState({ ...player })
         }
     }
 
