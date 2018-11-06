@@ -7,22 +7,33 @@ import * as constants from '../../constants';
 import * as React from 'react';
 import { IPlayer } from 'src/interfaces';
 import { v4 } from 'uuid';
+import NavigationBar from '../navigation-bar/NavigationBar';
 
 class App extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
 
-        let key: any = {};
-        let localStoragePlayers: string[] = [];
-
-        key = localStorage.getItem(constants.TEAM_PLAYERS)
-
-        key ? localStoragePlayers = JSON.parse(key) : localStoragePlayers = [];
-        localStoragePlayers ? this.state = { players: localStoragePlayers } : this.state = { players: [] };
+        this.state = { playerStatusFilter: 'null', players: [] };
 
         this.addPlayer = this.addPlayer.bind(this);
         this.editPlayer = this.editPlayer.bind(this);
         this.deletePlayer = this.deletePlayer.bind(this);
+    }
+
+    public componentDidMount() {
+        let playerKey: any = {};
+        let playerFilterStatusKey: any = {};
+        let localStoragePlayers: string[] = [];
+        let localStoragePlayerFilterByStatus: string = '';
+
+        playerKey = localStorage.getItem(constants.TEAM_PLAYERS);
+        playerFilterStatusKey = localStorage.getItem(constants.FILTER_BY_PLAYER_STATUS);
+
+        playerKey ? localStoragePlayers = JSON.parse(playerKey) : localStoragePlayers = [];
+        localStoragePlayers ? this.setState({ players: localStoragePlayers }) : this.setState({ players: [] });
+
+        playerFilterStatusKey ? localStoragePlayerFilterByStatus = JSON.parse(playerFilterStatusKey) : localStoragePlayerFilterByStatus = '';
+        localStoragePlayerFilterByStatus ? this.setState({ playerStatusFilter: localStoragePlayerFilterByStatus }) : this.setState({ playerStatusFilter: null });
     }
 
     public addPlayer = (player: IPlayer) => {
@@ -58,21 +69,27 @@ class App extends React.Component<any, any> {
         localStorage.setItem(constants.TEAM_PLAYERS, JSON.stringify(newList));
     }
 
-    // public homePlayers = () => this.state.players.filter((x: IPlayer) => x.team === 0);
+    public filterByPlayerStatus = (status: any) => {
+        this.setState({ playerStatusFilter: status });
 
-    // public awayPlayers = () => this.state.players.filter((x: IPlayer) => x.team === 1);
+        localStorage.setItem(constants.FILTER_BY_PLAYER_STATUS, JSON.stringify(status));
+    }
 
     public render() {
         return (
             <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Football manager</h1>
-                </header>
+                <NavigationBar
+                    playerStatusFilter={this.state.playerStatusFilter}
+                    filterByPlayerStatus={this.filterByPlayerStatus} />
                 <div className="row">
                     <div className="col-sm-6" style={{ marginBottom: '20px', marginTop: '10px', paddingBottom: '10px', borderBottom: 'solid 1px grey' }}>
                         <Team
                             teamName={constants.HOME_TEAM}
-                            players={this.state.players.filter((x: IPlayer) => x.team === 0)}
+                            players={
+                                this.state.playerStatusFilter !== null ?
+                                    this.state.players.filter((x: IPlayer) => x.team === constants.PlayerTeam.Home && x.status === this.state.playerStatusFilter) :
+                                    this.state.players.filter((x: IPlayer) => x.team === constants.PlayerTeam.Home)
+                            }
                             addPlayer={this.addPlayer}
                             editPlayer={this.editPlayer}
                             deletePlayer={this.deletePlayer} />
@@ -80,7 +97,11 @@ class App extends React.Component<any, any> {
                     <div className="col-sm-6">
                         <Team
                             teamName={constants.AWAY_TEAM}
-                            players={this.state.players.filter((x: IPlayer) => x.team === 1)}
+                            players={
+                                this.state.playerStatusFilter !== null ?
+                                    this.state.players.filter((x: IPlayer) => x.team === constants.PlayerTeam.Away && x.status === this.state.playerStatusFilter) :
+                                    this.state.players.filter((x: IPlayer) => x.team === constants.PlayerTeam.Away)
+                            }
                             addPlayer={this.addPlayer}
                             editPlayer={this.editPlayer}
                             deletePlayer={this.deletePlayer} />

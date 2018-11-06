@@ -18,6 +18,7 @@ class Team extends React.Component<any, any> {
             editPlayer={this.props.editPlayer}
             deletePlayer={this.props.deletePlayer} />
     );
+
     public render() {
         return (
             <div style={{ marginLeft: '10px', marginRight: '10px' }}>

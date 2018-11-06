@@ -12,4 +12,7 @@ export enum PlayerTeam {
 
 export const HOME_TEAM = 'Home';
 export const AWAY_TEAM = 'Away';
+
+// local storage variables
 export const TEAM_PLAYERS = 'TeamPlayers';
+export const FILTER_BY_PLAYER_STATUS = 'PlayerFilter';
