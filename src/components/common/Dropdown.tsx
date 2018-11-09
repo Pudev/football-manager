@@ -26,10 +26,10 @@ class Dropdown extends React.Component<any, any> {
                 </button>
 
                 <div className="dropdown-menu" >
-                    <a className="dropdown-item" onClick={this.click}>Uninvited</a>
-                    <a className="dropdown-item" onClick={this.click}>Invited</a>
-                    <a className="dropdown-item" onClick={this.click}>WillNotPlay</a>
-                    <a className="dropdown-item" onClick={this.click}>WillPlay</a>
+                    <a className="dropdown-item" onClick={this.click}>{PlayerStatus[0]}</a>
+                    <a className="dropdown-item" onClick={this.click}>{PlayerStatus[1]}</a>
+                    <a className="dropdown-item" onClick={this.click}>{PlayerStatus[2]}</a>
+                    <a className="dropdown-item" onClick={this.click}>{PlayerStatus[3]}</a>
                 </div>
             </div >
         );

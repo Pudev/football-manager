@@ -55,10 +55,10 @@ class NavigationBar extends React.Component<any, any> {
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a className="dropdown-item" onClick={this.click}>All</a>
-                                <a className="dropdown-item" onClick={this.click}>Uninvited</a>
-                                <a className="dropdown-item" onClick={this.click}>Invited</a>
-                                <a className="dropdown-item" onClick={this.click}>WillNotPlay</a>
-                                <a className="dropdown-item" onClick={this.click}>WillPlay</a>
+                                <a className="dropdown-item" onClick={this.click}>{PlayerStatus[0]}</a>
+                                <a className="dropdown-item" onClick={this.click}>{PlayerStatus[1]}</a>
+                                <a className="dropdown-item" onClick={this.click}>{PlayerStatus[2]}</a>
+                                <a className="dropdown-item" onClick={this.click}>{PlayerStatus[3]}</a>
                             </div>
                         </li>
                     </ul>
