@@ -4,6 +4,8 @@ import Player from '../player/Player';
 import * as constants from '../../constants';
 import { IPlayer } from '../../interfaces';
 
+import './Team.css'
+
 import * as React from 'react';
 
 class Team extends React.Component<any, any> {
@@ -21,7 +23,7 @@ class Team extends React.Component<any, any> {
 
     public render() {
         return (
-            <div style={{ marginLeft: '10px', marginRight: '10px' }}>
+            <div className="margin-left-right-10">
                 <div className="row">
                     <h3 className="col-8">{this.props.teamName}</h3>
                     <div className="col-4">

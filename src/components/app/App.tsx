@@ -82,7 +82,7 @@ class App extends React.Component<any, any> {
                     playerStatusFilter={this.state.playerStatusFilter}
                     filterByPlayerStatus={this.filterByPlayerStatus} />
                 <div className="row">
-                    <div className="col-sm-6" style={{ marginBottom: '20px', marginTop: '10px', paddingBottom: '10px', borderBottom: 'solid 1px grey' }}>
+                    <div className="col-sm-6 team-separaton">
                         <Team
                             teamName={constants.HOME_TEAM}
                             players={

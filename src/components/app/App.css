@@ -23,6 +23,13 @@
   font-size: large;
 }
 
+.team-separaton {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px grey;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
