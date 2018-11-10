@@ -1,5 +1,8 @@
 {
   "name": "football-manager",
+  "homepage": "https://pudev.github.io/football-manager",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,6 +30,7 @@
     "@types/node": "^10.11.4",
     "@types/react": "^16.4.14",
     "@types/react-dom": "^16.0.8",
+    "gh-pages": "^2.0.1",
     "typescript": "^3.1.1"
   }
 }
