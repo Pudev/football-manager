@@ -1,8 +1,6 @@
 {
   "name": "football-manager",
   "homepage": "https://pudev.github.io/football-manager",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,7 +9,9 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "@types/uuid": "^3.4.4",
     "bootstrap": "^4.1.3",
+    "cryptiles": "^4.1.3",
     "jquery": "^3.3.1",
+    "merge": "^1.2.1",
     "popper": "^1.0.1",
     "popper.js": "^1.14.4",
     "react": "^16.5.2",
@@ -23,7 +23,9 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@types/jest": "^23.3.3",
