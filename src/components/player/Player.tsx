@@ -28,7 +28,7 @@ class Player extends React.Component<any, any> {
         return (
             <div className="alert alert-primary">
                 <div className="row">
-                    <span className="col-12 font-bold">{this.props.name} / {this.props.phone}</span>
+                    <span className="col-12 font-bold">{this.props.name} {this.props.phone ? `/ ${this.props.phone}`: ""}</span>
                 </div>
 
                 <div className="row">
