@@ -1,11 +1,8 @@
 import ButtonAddEditPlayer from '../common/ButtonAddEditPlayer';
 import Player from '../player/Player';
-
 import * as constants from '../../constants';
 import { IPlayer } from '../../interfaces';
-
 import './Team.css'
-
 import * as React from 'react';
 
 class Team extends React.Component<any, any> {
