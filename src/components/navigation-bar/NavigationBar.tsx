@@ -47,6 +47,9 @@ class NavigationBar extends React.Component<any, any> {
                             <Link className="nav-link" to='/'>Home</Link>
                         </li>
                         <li className="nav-item">
+                            <div className="nav-link" onClick={() => {this.props.resetPlayersStatus()}}>Reset players status</div>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link" to='/about'>About</Link>
                         </li>
                         <li className="nav-item dropdown">

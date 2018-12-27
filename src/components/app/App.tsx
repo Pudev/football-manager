@@ -73,12 +73,23 @@ class App extends React.Component<any, any> {
         localStorage.setItem(constants.FILTER_BY_PLAYER_STATUS, JSON.stringify(status));
     }
 
+    public resetPlayersStatus = () => {
+        const newList = this.state.players.map((x: IPlayer) => {
+            x.status = constants.PlayerStatus.Uninvited;
+            return x;
+        });
+
+        this.setState({ players: newList });
+        localStorage.setItem(constants.TEAM_PLAYERS, JSON.stringify(newList));
+    }
+
     render() {
         return (
             <div className="App">
                 <NavigationBar
                     playerStatusFilter={this.state.playerStatusFilter}
                     filterByPlayerStatus={this.filterByPlayerStatus}
+                    resetPlayersStatus={this.resetPlayersStatus}
                 />
                 <Main
                     players={this.state.players}
