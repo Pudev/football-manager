@@ -16,6 +16,17 @@ class Player extends React.Component<any, any> {
         this.deletePlayer.bind(this);
     }
 
+    colorLegendSwitcher() {
+        switch (this.props.status) {
+            case 0: return "#cce5ff";
+            case 1: return "yellow";
+            case 2: return "red"; 
+            case 3: return "green";
+
+            default: return "#cce5ff";
+        }
+    }
+
     public editPlayer = (player: IPlayer) => {
         this.props.editPlayer(player);
     }
@@ -24,11 +35,15 @@ class Player extends React.Component<any, any> {
         this.props.deletePlayer(id);
     }
 
+    public colorLegend = {
+        borderLeftColor: this.colorLegendSwitcher()
+    }
+
     public render() {
         return (
-            <div className="alert alert-primary">
+            <div className="alert alert-primary color-indicatior" style={this.colorLegend}>
                 <div className="row">
-                    <span className="col-12 font-bold">{this.props.name} {this.props.phone ? `/ ${this.props.phone}`: ""}</span>
+                    <span className="col-12 font-bold">{this.props.name} {this.props.phone ? `/ ${this.props.phone}` : ""}</span>
                 </div>
 
                 <div className="row">
@@ -43,7 +58,7 @@ class Player extends React.Component<any, any> {
                     <div className="col-6">
                         <Dropdown
                             editPlayer={this.editPlayer}
-                           {...this.props} />
+                            {...this.props} />
                     </div>
                 </div>
             </div>
