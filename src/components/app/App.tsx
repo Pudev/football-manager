@@ -59,9 +59,7 @@ class App extends React.Component<any, any> {
     }
 
     public deletePlayer = (id: string) => {
-        const index = this.state.players.findIndex((x: IPlayer) => x.id === id);
-        const newList = [...this.state.players];
-        newList.splice(index, 1);
+        let newList = this.state.players.filter((x: IPlayer) => x.id != id)
 
         this.setState({ players: newList });
         localStorage.setItem(constants.TEAM_PLAYERS, JSON.stringify(newList));

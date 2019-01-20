@@ -86,12 +86,12 @@ class ButtonAddEditPlayer extends React.Component<any, any> {
                                             value={this.state.name}
                                             onChange={this.changeName} />
                                     </div>
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <label htmlFor="phone">Phone:</label>
                                         <input type="text" className="form-control" id="phone" required={true}
                                             value={this.state.phone}
                                             onChange={this.changePhone} />
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div className="modal-footer">
