@@ -12,14 +12,14 @@ class Main extends React.Component<any, any> {
         return (
             <main>
                 <Switch>
-                    <Route exact path='/' basename={process.env.PUBLIC_URL} component={() => <Home
+                    <Route exact path={`${process.env.PUBLIC_URL}/`} component={() => <Home
                         addPlayer={this.props.addPlayer}
                         editPlayer={this.props.editPlayer}
                         deletePlayer={this.props.deletePlayer}
                         players={this.props.players}
                         playerStatusFilter={this.props.playerStatusFilter} />}
                     />
-                    <Route path='/about' basename={process.env.PUBLIC_URL} component={About} />
+                    <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
                 </Switch>
             </main>
         );
