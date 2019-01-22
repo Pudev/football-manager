@@ -36,7 +36,7 @@ class Player extends React.Component<any, any> {
     }
 
     public colorLegend = {
-        borderLeftColor: this.colorLegendSwitcher()
+        borderColor: this.colorLegendSwitcher()
     }
 
     public render() {

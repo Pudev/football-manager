@@ -3,6 +3,12 @@
 }
 
 .color-indicatior {
-    border-left-style: solid;
-    border-left-width: thick;
+    border-style: solid;
+    border-width: thick
+}
+
+.alert {
+    padding: 0.25rem 1.25rem;
+    margin-left: -15px;
+    margin-right: -15px;
 }
