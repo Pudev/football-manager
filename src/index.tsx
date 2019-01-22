@@ -5,10 +5,10 @@ import * as ReactDOM from 'react-dom';
 import App from './components/app/App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
         <App />
     </BrowserRouter>,
     document.getElementById('root') as HTMLElement
